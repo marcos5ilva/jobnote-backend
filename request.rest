@@ -1,0 +1,53 @@
+
+
+POST http://localhost:5000/board/add
+Content-Type: application/json
+
+{
+     "board":[
+        {
+            "title": "Wish",
+            "createtable": true,
+            "cards":{
+                    "id":1 ,
+                    "content": "Wishign job bla bla bla bla bla",
+                    "labels": ["#719c1"],
+                    "user": ""
+                } 
+        },
+        {
+            "title": "Applied",
+            "createtable" : false,
+            "cards":{
+                    "id":2 ,
+                    "content": "Applied job bla bla bla bla bla",
+                    "labels": ["#719c1"],
+                    "user": ""
+                } 
+        },
+        {
+            "title": "Screening",
+            "createtable": false,
+            "cards":{
+                    "id":1 ,
+                    "content": "Screening interview bla bla bla bla bla",
+                    "labels": ["#719c1"],
+                    "user": ""
+                } 
+        },
+
+        {
+            "title": "Code Challenge",
+            "createtable": false,
+            "cards":{
+                    "id":1 ,
+                    "content": "Code challenge job bla bla bla bla bla",
+                    "labels": ["#719c1"],
+                    "user": ""
+                } 
+        }
+    ]
+    
+    
+    
+}
