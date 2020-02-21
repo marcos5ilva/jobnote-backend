@@ -4,10 +4,10 @@ let Lists = require('../models/lists.model');
 let Cards = require('../models/cards.model');
 
 
-router.route('/').get(async (req, res)=>{
+router.route('/:boardId').get(async (req, res)=>{
     try{
-        console.log('Linting board')
-        const board = await Board.find().populate({path: 'lists', model:'Lists',populate: {
+        console.log('Listing board')
+        const board = await Board.findById(req.params.boardId).populate({path: 'lists', model:'Lists',populate: {
             path:'cards', model:'Cards', populate :{
                 path:'interviewQuestions', model: 'InterviewQuestions'
             }

@@ -17,7 +17,20 @@ router.route('/').get( async(req, res)=>{
    
 })
 
+router.route('/add/:boardID').post(async (req, res)=>{
+    try{
+        const {title, creatable} = req.body;
+        const list = await Lists.create({title, creatable, board: req.params.boardID});
+        await list.save();
 
+        return res.send({list});
+    }
+    catch(e){
+        console.log(e);
+        return res.status(400).send({Error: 'Error creating list'})
+
+    }
+})
 router.route('/update/:id').patch(async (req, res) =>{
     console.log('Update endpoint requested');
     const updates =Object.keys(req.body);

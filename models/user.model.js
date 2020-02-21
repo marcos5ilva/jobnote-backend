@@ -33,7 +33,13 @@ const userSchema = new Schema({
         minlength: 6,
         select: false,
     },
-}, {
+    board: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Board',
+        required: true,
+    },
+},
+ {
     timestamps:true,
 });
 

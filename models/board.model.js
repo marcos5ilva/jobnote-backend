@@ -40,6 +40,7 @@ const Schema = mongoose.Schema;
     //lists: [listSchema]
     title: String,
     description: String,
+    userID: mongoose.Schema.Types.ObjectId,
     lists: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Lists',
