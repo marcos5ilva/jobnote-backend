@@ -71,8 +71,7 @@ router.route('/update/:id').patch(async (req, res) =>{
             return res.status(404).send()
         }
 
-        //board.lists =[];
-        //await Lists.remove({board: board._id});
+        
 
         await Promise.all (lists.map( async list => {
             const boardList = new Lists({ ...list, board: board._id});

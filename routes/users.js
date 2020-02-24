@@ -77,16 +77,16 @@ router.route('/add').post(async (req, res)=> {
             const updateListScreening = await Lists.findByIdAndUpdate(listScreening._id, {cards:[cards[2]]},{new: true, runValidators: true})
 
             const updateBoard = await Board.findByIdAndUpdate(board._id,{lists:[listWish,listApplied, listScreening]},{new: true, runValidators: true} );
-            //const userBoardandList = await Promise.all([board, lists]);
            
             
             const newUser = await User.create({ ...user, board: board._id});
             
     
-            //console.log('userBoardAndList',userBoardandList[0]._id);
             
         
         console.log('User board created');
+        console.log('newUser ', newUser);
+        return res.send(newUser);
         
         } catch (e) {
             console.log(e);
