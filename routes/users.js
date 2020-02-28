@@ -15,28 +15,22 @@ router.route('/').post((req, res) =>{
 
 
 router.route('/signin').post(async (req, res)=> {
-    console.log('sign in...');
   
     const {email, password} = req.body;
-    console.log('email ', email);
-    console.log('password ', password);
-   
     
     const user = await User.findOne({ email }).select('+password');
    
-    const isMatch = !await bcrypt.compare(password, user.password);
-    console.log('backend sign in user ', user);
-    console.log('isMatch ', isMatch);
+    const isMatch = await bcrypt.compare(password, user.password);
+    
         if(!user)
             return res.status(400).send({error: 'User not found'});
             
             
-        //if(!isMatch)
-           // return res.status(400).send({error: 'Wrong password'});
+        if(!isMatch)
+           return res.status(400).send({error: 'Wrong password'});
            
         res.send({user});
         console.log('user found')
-        //res.redirect(303, '/board' + querystring.stringify({user}));;         
  
 })
 
